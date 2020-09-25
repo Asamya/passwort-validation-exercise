@@ -9,8 +9,8 @@ public class PasswordValidation {
         System.out.println(checkPasswordForLength(passwordArray[0]));
     }
 
-
-    static int checkPasswordForLength (String password) {
+    // Method to set the length of the password
+    static String checkPasswordForLength (String password) {
         int result = 0;
         for (int i = 0; i < password.length(); i++){
             result = result + i;
