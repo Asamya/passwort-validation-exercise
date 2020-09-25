@@ -12,7 +12,7 @@ class PasswordValidationTest {
     @DisplayName("Passwordlength is greater than 0?")
     public void checkLenghtOfPassword () {
         //Given
-        String passwordLength = "";
+        String passwordLength = "abcd";
 
         //When
         int checkPasswordLength = PasswordValidation.checkPasswordForLength(passwordLength);
