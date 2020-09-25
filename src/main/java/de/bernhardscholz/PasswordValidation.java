@@ -5,5 +5,8 @@ public class PasswordValidation {
 
     }
 
+    static int checkPasswordForLength (String password) {
+        return 0;
+    }
 
 }
