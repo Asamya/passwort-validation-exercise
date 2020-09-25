@@ -3,6 +3,8 @@ package de.bernhardscholz;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,14 +12,40 @@ class PasswordValidationTest {
 
     @Test
     @DisplayName("Passwordlength is greater than 0?")
-    public void checkLenghtOfPassword () {
+    public void checkLenghtOfPassword() {
         //Given
-        String passwordLength = "abcd";
+        String passwordLength = "dkfjkdjf";
 
         //When
-        int checkPasswordLength = PasswordValidation.checkPasswordForLength(passwordLength);
+        boolean checkPasswordLength = PasswordValidation.checkPasswordForLength(passwordLength);
 
         //Then
-        Assertions.assertNotEquals(0, checkPasswordLength);
+        Assertions.assertTrue(checkPasswordLength);
+    }
+
+    @Test
+    @DisplayName("Password contains numbers?")
+    public void checkPasswordForNumbers() {
+        // Given
+        String passwordWithNumber = "dfjsjf55";
+
+        // When
+        boolean checkPasswordWithNumber = PasswordValidation.checkPasswordForNumbers(passwordWithNumber);
+
+        // Then
+        Assertions.assertTrue(checkPasswordWithNumber);
+    }
+
+    @Test
+    @DisplayName("Password contains upper- or-lowercase letters")
+    public void checkPasswordForUpperAndLowercase() {
+        // Given
+        String passwordWithLowerAndUppercase = "kfjkfgjHHH";
+
+        // When
+        boolean checkPasswordWithLowerAndUppercase = PasswordValidation.checkPasswordForUpperAndLowerCaseLetters(passwordWithLowerAndUppercase);
+
+        // then
+        Assertions.assertTrue(checkPasswordWithLowerAndUppercase);
     }
 }
