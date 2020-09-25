@@ -10,7 +10,7 @@ public class PasswordValidation {
     }
 
     // Method to set the length of the password
-    static String checkPasswordForLength (String password) {
+    static int checkPasswordForLength (String password) {
         int result = 0;
         for (int i = 0; i < password.length(); i++){
             result = result + i;
