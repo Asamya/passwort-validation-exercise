@@ -49,10 +49,11 @@ public class PasswordValidation {
         return (password.equals(passwordToLowerCase));
     }
 
+
     // This is work in Progress and doesn`t work as expected
     // Validate an array of passwords
 
-    /*static boolean validateArrayOfPasswords (String[] passwords) {
+    /* static boolean validateArrayOfPasswords (String[] passwords) {
         boolean result = false;
         for (String i : passwords) {
             if ((checkPasswordForLength(i) && checkPasswordForNumbers(i) && checkPasswordForUpperAndLowerCaseLetters(i)) == true) {
@@ -60,6 +61,8 @@ public class PasswordValidation {
             }
         }
         return result;
-    } */
+    }
+
+     */
 
 }

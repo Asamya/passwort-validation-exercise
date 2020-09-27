@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -48,6 +48,23 @@ class PasswordValidationTest {
         // then
         Assertions.assertTrue(checkPasswordWithLowerAndUppercase);
     }
+
+    /*
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "   "})
+    public void validatePasswordsOfArray() {
+        //Given
+        String[] passwords = {"dfjsjf3", " ","sdfkjsdkfj"};
+
+        // When
+        boolean validationOfPasswordsInArray = PasswordValidation.validateArrayOfPasswords(passwords);
+
+        // Then
+        assertTrue(validationOfPasswordsInArray);
+    }
+     */
+
+
 
     /* This is not working
 
