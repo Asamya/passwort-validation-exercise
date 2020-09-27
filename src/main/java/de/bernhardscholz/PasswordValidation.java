@@ -8,11 +8,11 @@ public class PasswordValidation {
         passwordArray[2] = "nxckfj45@sdfjh5";
         passwordArray[3] = "";
 
-        // System.out.println(passwordArray[0]);
+        System.out.println(passwordArray[0]);
         System.out.println(checkPasswordForLength(passwordArray[3]));
-        // System.out.println(checkPasswordForNumbers(passwordArray[1]));
-        // System.out.println(checkPasswordForUpperAndLowerCaseLetters(passwordArray[1]));
-        System.out.println(validateArrayOfPasswords(passwordArray));
+        System.out.println(checkPasswordForNumbers(passwordArray[1]));
+        System.out.println(checkPasswordForUpperAndLowerCaseLetters(passwordArray[1]));
+        // System.out.println(validateArrayOfPasswords(passwordArray));
     }
 
     // Check if there is a string in the parameter
@@ -49,7 +49,7 @@ public class PasswordValidation {
         return (password.equals(passwordToLowerCase));
     }
 
-    // This is work in Progress and don`t work as expected
+    // This is work in Progress and doesn`t work as expected
     // Validate an array of passwords
 
     /*static boolean validateArrayOfPasswords (String[] passwords) {
