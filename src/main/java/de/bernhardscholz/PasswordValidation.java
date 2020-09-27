@@ -2,17 +2,20 @@ package de.bernhardscholz;
 
 public class PasswordValidation {
     public static void main (String[] args) {
-        String [] passwordArray = new String[10];
+        String [] passwordArray = new String[4];
         passwordArray[0] = "ngk5867kdl2";
-        passwordArray[1] = "aksdHdffgig";
+        passwordArray[1] = "aksdh1dffgig";
+        passwordArray[2] = "nxckfj45@sdfjh5";
+        passwordArray[3] = "";
 
-        System.out.println(passwordArray[0]);
-        System.out.println(checkPasswordForLength(passwordArray[0]));
-        System.out.println(checkPasswordForNumbers(passwordArray[1]));
-        System.out.println(checkPasswordForUpperAndLowerCaseLetters(passwordArray[1]));
+        // System.out.println(passwordArray[0]);
+        System.out.println(checkPasswordForLength(passwordArray[3]));
+        // System.out.println(checkPasswordForNumbers(passwordArray[1]));
+        // System.out.println(checkPasswordForUpperAndLowerCaseLetters(passwordArray[1]));
+        System.out.println(validateArrayOfPasswords(passwordArray));
     }
 
-    // Check and give back the length of the password
+    // Check if there is a string in the parameter
     static boolean checkPasswordForLength (String password) {
         int result = 0;
         for (int i = 0; i < password.length(); i++){
@@ -43,8 +46,20 @@ public class PasswordValidation {
     // Check the password for upper- and lowercase letters
     static boolean checkPasswordForUpperAndLowerCaseLetters (String password) {
         String passwordToLowerCase = password.toLowerCase();
-        return (!password.equals(passwordToLowerCase));
+        return (password.equals(passwordToLowerCase));
     }
 
+    // This is work in Progress and don`t work as expected
+    // Validate an array of passwords
+
+    /*static boolean validateArrayOfPasswords (String[] passwords) {
+        boolean result = false;
+        for (String i : passwords) {
+            if ((checkPasswordForLength(i) && checkPasswordForNumbers(i) && checkPasswordForUpperAndLowerCaseLetters(i)) == true) {
+                result = true;
+            }
+        }
+        return result;
+    } */
 
 }

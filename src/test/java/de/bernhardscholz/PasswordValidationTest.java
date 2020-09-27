@@ -48,4 +48,22 @@ class PasswordValidationTest {
         // then
         Assertions.assertTrue(checkPasswordWithLowerAndUppercase);
     }
+
+    /* This is not working
+
+
+    @Test
+    @DisplayName("Array contains valid passwords?")
+    public void validatePasswordsOfArray() {
+        //Given
+        String[] passwords = {"dfjsjf3", "sdfkjslj20","sdfkjsdkfj"};
+
+        //When
+        boolean validationOfPasswordsInArray = PasswordValidation.validateArrayOfPasswords(passwords);
+
+        //Then
+        assertTrue(validationOfPasswordsInArray);
+    }
+
+     */
 }
