@@ -37,16 +37,42 @@ class PasswordValidationTest {
     }
 
     @Test
-    @DisplayName("Password contains upper- or-lowercase letters")
-    public void checkPasswordForUpperAndLowercase() {
+    @DisplayName("Password contains only lowercase letters")
+    public void checkPasswordForLowercase() {
         // Given
-        String passwordWithLowerAndUppercase = "kfjkfgjHHH";
+        String passwordWithLowercase = "kfjkfgj";
 
         // When
-        boolean checkPasswordWithLowerAndUppercase = PasswordValidation.checkPasswordForUpperAndLowerCaseLetters(passwordWithLowerAndUppercase);
+        boolean checkPasswordWithLowercase = PasswordValidation.checkPasswordForUpperAndLowerCaseLetters(passwordWithLowercase);
 
         // then
-        Assertions.assertTrue(checkPasswordWithLowerAndUppercase);
+        Assertions.assertTrue(checkPasswordWithLowercase);
+    }
+
+    @Test
+    @DisplayName("Password contains only uppercase letters")
+    public void checkPasswordForUppercase() {
+        // Given
+        String passwordWithUppercase = "UHDNFJRHE";
+
+        // When
+        boolean checkPasswordWithUppercase = PasswordValidation.checkPasswordForUpperAndLowerCaseLetters(passwordWithUppercase);
+
+        // then
+        Assertions.assertTrue(checkPasswordWithUppercase);
+    }
+
+    @Test
+    @DisplayName("Password contains lower- and uppercase letters?")
+    public void checkPasswordForUpperAndLowercase() {
+        //Given
+        String passwordWithUpperAndLowercase = "LHFunfhLFK";
+
+        //When
+        boolean checkPasswordWithUpperAndLowercase = PasswordValidation.checkPasswordForUpperAndLowerCaseLetters(passwordWithUpperAndLowercase);
+
+        //Then
+        assertTrue(checkPasswordWithUpperAndLowercase);
     }
 
     /*
