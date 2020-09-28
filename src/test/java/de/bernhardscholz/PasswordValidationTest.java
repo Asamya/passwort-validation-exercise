@@ -10,103 +10,68 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PasswordValidationTest {
 
-    @Test
-    @DisplayName("Passwordlength is greater than 0?")
-    public void checkLenghtOfPassword() {
-        //Given
-        String passwordLength = "dkfjkdjf";
+    @ParameterizedTest(name = "Password is greater than or equal to 10: {1}")
+    @CsvSource({
+            "abkdjfkRJ6, true",
+            "akdngn, false"
+    })
+    public void checkLenghtOfPassword(String password, boolean result) {
+        boolean isGreaterThan10 = PasswordValidation.checkPasswordForLenght10(password);
 
-        //When
-        boolean checkPasswordLength = PasswordValidation.checkPasswordForLength(passwordLength);
-
-        //Then
-        Assertions.assertTrue(checkPasswordLength);
+        assertEquals(isGreaterThan10, result);
     }
 
-    @Test
-    @DisplayName("Password contains numbers?")
-    public void checkPasswordForNumbers() {
-        // Given
-        String passwordWithNumber = "dfjsjf55";
-
+    @ParameterizedTest(name = "Password contains numbers: {1}")
+    @CsvSource({
+            "abfkrk5l68, true",
+            "akdfjHJfk, false"
+    })
+    public void checkPasswordForNumbers(String password, boolean result) {
         // When
-        boolean checkPasswordWithNumber = PasswordValidation.checkPasswordForNumbers(passwordWithNumber);
+        boolean checkPasswordForNumberTest = PasswordValidation.checkPasswordForNumbers(password);
 
         // Then
-        Assertions.assertTrue(checkPasswordWithNumber);
+        assertEquals(checkPasswordForNumberTest, result);
     }
 
-    @Test
-    @DisplayName("Password contains only lowercase letters")
-    public void checkPasswordForLowercase() {
-        // Given
-        String passwordWithLowercase = "kfjkfgj";
-
+    @ParameterizedTest(name = "Does password have uppercase letters: {1}")
+    @CsvSource({
+            "DFDjgkdn45, true",
+            "fkgjfdjg, false"
+    })
+    public void checkPasswordForUppercase(String password, boolean result) {
         // When
-        boolean checkPasswordWithLowercase = PasswordValidation.checkPasswordForUpperAndLowerCaseLetters(passwordWithLowercase);
+        boolean checkPasswordWithLowercase = PasswordValidation.checkPasswordForUppercaseLetters(password);
 
         // then
-        Assertions.assertTrue(checkPasswordWithLowercase);
+        assertEquals(checkPasswordWithLowercase, result);
     }
 
-    @Test
-    @DisplayName("Password contains only uppercase letters")
-    public void checkPasswordForUppercase() {
-        // Given
-        String passwordWithUppercase = "UHDNFJRHE";
-
+    @ParameterizedTest(name = "Does password have lowercase letters: {1}")
+    @CsvSource({
+            "DFDjgkdn45, false",
+            "fkgjfdjg, true"
+    })
+    public void checkPasswordForLowercase(String password, boolean result) {
         // When
-        boolean checkPasswordWithUppercase = PasswordValidation.checkPasswordForUpperAndLowerCaseLetters(passwordWithUppercase);
+        boolean checkPasswordWithUppercase = PasswordValidation.checkPasswordForLowercaseLetters(password);
 
         // then
-        Assertions.assertTrue(checkPasswordWithUppercase);
+        assertEquals(checkPasswordWithUppercase, result);
     }
 
-    @Test
-    @DisplayName("Password contains lower- and uppercase letters?")
-    public void checkPasswordForUpperAndLowercase() {
-        //Given
-        String passwordWithUpperAndLowercase = "LHFunfhLFK";
 
-        //When
-        boolean checkPasswordWithUpperAndLowercase = PasswordValidation.checkPasswordForUpperAndLowerCaseLetters(passwordWithUpperAndLowercase);
+    @ParameterizedTest(name = "Array of passwords is valid: {1}")
+    @CsvSource({
+            "passWord123, true",
+            "password123, false",
+            "password, false",
+            "pass123word, false",
+            "pass123Word, true"
+    })
+    public void checkAndValidateArrayOfPasswords(String password, boolean expected) {
+        boolean checkForValidateArray = PasswordValidation.isValidPassword(password);
 
-        //Then
-        assertTrue(checkPasswordWithUpperAndLowercase);
+        assertEquals(expected, checkForValidateArray);
     }
-
-    /*
-    @ParameterizedTest
-    @ValueSource(strings = {"", " ", "   "})
-    public void validatePasswordsOfArray() {
-        //Given
-        String[] passwords = {"dfjsjf3", " ","sdfkjsdkfj"};
-
-        // When
-        boolean validationOfPasswordsInArray = PasswordValidation.validateArrayOfPasswords(passwords);
-
-        // Then
-        assertTrue(validationOfPasswordsInArray);
-    }
-     */
-
-
-
-    /* This is not working
-
-
-    @Test
-    @DisplayName("Array contains valid passwords?")
-    public void validatePasswordsOfArray() {
-        //Given
-        String[] passwords = {"dfjsjf3", "sdfkjslj20","sdfkjsdkfj"};
-
-        //When
-        boolean validationOfPasswordsInArray = PasswordValidation.validateArrayOfPasswords(passwords);
-
-        //Then
-        assertTrue(validationOfPasswordsInArray);
-    }
-
-     */
 }

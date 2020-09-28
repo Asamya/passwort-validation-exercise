@@ -9,14 +9,14 @@ public class PasswordValidation {
         passwordArray[3] = "";
 
         System.out.println(passwordArray[0]);
-        System.out.println(checkPasswordForLength(passwordArray[3]));
+        System.out.println(checkPasswordForLenght10(passwordArray[3]));
         System.out.println(checkPasswordForNumbers(passwordArray[1]));
-        System.out.println(checkPasswordForUpperAndLowerCaseLetters(passwordArray[1]));
+        System.out.println(checkPasswordForUppercaseLetters(passwordArray[1]));
         // System.out.println(validateArrayOfPasswords(passwordArray));
     }
 
     // Check if there is a string in the parameter
-    static boolean checkPasswordForLength (String password) {
+    /* static boolean checkPasswordForLength (String password) {
         int result = 0;
         for (int i = 0; i < password.length(); i++){
             result = result + 1;
@@ -26,6 +26,14 @@ public class PasswordValidation {
         } else {
             return true;
         }
+    }
+
+     */
+
+    // Check if the password is greater than or equal to 10
+    private static final int MINIMUM_LENGTH = 10;
+    static boolean checkPasswordForLenght10 (String password) {
+        return password.length() >= MINIMUM_LENGTH;
     }
 
     // Check the password for numbers
@@ -43,26 +51,25 @@ public class PasswordValidation {
         return result;
     }
 
-    // Check the password for upper- and lowercase letters
-    static boolean checkPasswordForUpperAndLowerCaseLetters (String password) {
+    // Check the password for uppercase letters
+    static boolean checkPasswordForUppercaseLetters (String password) {
         String passwordToLowerCase = password.toLowerCase();
-        return (password.equals(passwordToLowerCase));
+        return !password.equals(passwordToLowerCase);
     }
 
-
-    // This is work in Progress and doesn`t work as expected
-    // Validate an array of passwords
-
-    /* static boolean validateArrayOfPasswords (String[] passwords) {
-        boolean result = false;
-        for (String i : passwords) {
-            if ((checkPasswordForLength(i) && checkPasswordForNumbers(i) && checkPasswordForUpperAndLowerCaseLetters(i)) == true) {
-                result = true;
-            }
-        }
-        return result;
+    // Check the password for lowercase letters
+    static boolean checkPasswordForLowercaseLetters (String password) {
+        String passwordToLowercase = password.toLowerCase();
+        return password.equals(passwordToLowercase);
     }
 
-     */
+    //Validate an Array of passwords
+    static boolean isValidPassword (String password) {
+        return checkPasswordForLenght10(password)
+                && checkPasswordForNumbers(password)
+                // && checkPasswordForLowercaseLetters(password);
+                && checkPasswordForUppercaseLetters(password);
+    }
+
 
 }
